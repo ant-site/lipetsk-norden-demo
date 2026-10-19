@@ -1,0 +1,26 @@
+.route { padding: clamp(56px, 8vw, 96px) 0 0; }
+.route__wrap { max-width: var(--max, 1120px); margin: 0 auto; padding: 0 var(--gut, 20px); }
+.route__map { margin-top: 28px; background: var(--c-surface); border: 1px solid var(--hair); border-radius: var(--r, 18px); padding: clamp(10px, 2vw, 22px); }
+.route__map svg { display: block; width: 100%; height: auto; }
+.route__grid path { stroke: var(--hair); fill: none; stroke-width: 1; }
+.route__line { fill: none; stroke: var(--c-ink-soft); stroke-width: 2.2; stroke-linecap: round; opacity: .55; transition: stroke .25s, opacity .25s, stroke-width .25s; }
+.route__line.is-pick { stroke: var(--c-accent); stroke-width: 4; opacity: 1; }
+.route__city { cursor: pointer; }
+.route__city circle { fill: var(--c-surface); stroke: var(--c-ink-soft); stroke-width: 2.2; transform-box: fill-box; transform-origin: center; transition: transform .3s cubic-bezier(.2,.8,.2,1), fill .25s; transform: scale(0); }
+.route__city.is-on circle { transform: scale(1); }
+.route__city.is-pick circle { fill: var(--c-accent); stroke: var(--c-accent); transform: scale(1.35); }
+.route__city text { font: 700 15px var(--f-text); fill: var(--c-ink); opacity: 0; transition: opacity .3s; paint-order: stroke; stroke: var(--c-surface); stroke-width: 4px; }
+.route__city.is-on text { opacity: 1; }
+.route__home circle { fill: var(--c-accent); }
+.route__home .ring { fill: none; stroke: var(--c-accent); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: routeping 2.4s ease-out infinite; }
+.route__home text { font: 800 17px var(--f-display, var(--f-text)); fill: var(--c-ink); paint-order: stroke; stroke: var(--c-surface); stroke-width: 5px; }
+@keyframes routeping { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.6); opacity: 0; } }
+.route__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.route__chip { font: 600 .92rem/1 var(--f-text); padding: 11px 15px; border-radius: 999px; border: 1px solid var(--hair); background: var(--c-surface); color: var(--c-ink); cursor: pointer; }
+.route__chip small { color: var(--c-ink-soft); font-weight: 500; margin-left: 4px; }
+.route__chip[aria-pressed="true"] { background: var(--c-accent); border-color: var(--c-accent); color: var(--c-accent-ink); }
+.route__chip[aria-pressed="true"] small { color: inherit; }
+.route__note { margin-top: 12px; font-size: .84rem; color: var(--c-ink-soft); }
+.route__go { margin-top: 18px; }
+@media (max-width: 640px) { .route__city text { font-size: 28px; stroke-width: 6px; } .route__home text { font-size: 30px; } .route__city circle { r: 10px; } }
+@media (prefers-reduced-motion: reduce) { .route__home .ring { animation: none; } }
